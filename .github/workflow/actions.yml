@@ -1,0 +1,10 @@
+name: actions
+run-name: WhiteSunOfSpace is running lab04
+on: [push]
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test project
+        run: ./.github/workflow/test.sh
