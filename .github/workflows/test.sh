@@ -1,3 +1,4 @@
+sudo chmod +x test.sh
 cmake --build ./formatter_lib
 cmake --build ./formatter_ex_lib 
 cmake --build ./hello_world_application 
