@@ -262,3 +262,42 @@ cmake --build ./_build
 [100%] Linking CXX executable main
 [100%] Built target main
 ```
+***
+## Создание папки .github/workflows и файлов test.sh & actions.yml
+```bash
+mkdir .github/workflows
+cd .github/workflows
+touch test.sh
+touch actions.yml
+```
+### Содержание файла test.sh
+```bash
+root=./
+cmake --build $root/formatter_lib
+cmake --build $root/formatter_ex_lib 
+cmake --build $root/hello_world_application 
+cmake --build $root/solver_lib
+cmake --build $root/solver_application
+
+$root/hello_world_application/_build/main
+echo -e '1\n2\n3' | $root/solver_application/_build/main
+```
+
+### Содержание файла actions.yml
+```bash
+name: actions
+run-name: WhiteSunOfSpace is running lab04
+on: [push]
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test project
+        run: ./.github/workflows/test.sh
+```
+## Делаем файлы исполняемыми
+```bash
+chmod +x test.sh
+chmod +x main
+```
