@@ -1,5 +1,5 @@
 name: actions
-run-name: WhiteSunOfSpace is running lab04
+run-name: WhiteSunOfSpace is running lab06
 on: [push]
 jobs:
   container-job:
